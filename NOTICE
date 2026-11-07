@@ -1,0 +1,34 @@
+Breeze-TTS-2-flash
+Copyright 2026 Breeze-TTS-2-flash contributors
+
+This repository is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Third-party code
+----------------
+third_party/breeze-tts/
+    An unmodified copy of breeze_infer/, models/, configs/, requirements.txt and LICENSE from the official Breeze TTS
+    runtime, https://github.com/breezeblue-ai/breeze-tts, commit daa6cb2efe5471f09369229f322d20bb956cb3c3.
+    Licensed under the Apache License, Version 2.0 (third_party/breeze-tts/LICENSE). Some of its files carry their own
+    copyright headers (Sesame, The HuggingFace Inc. team).
+
+flash/
+    The acceleration hooks wrap or replace functions of the runtime above. flash/main_loop.py, flash/sampling.py,
+    flash/codec_kv_fix.py, flash/depth.py, flash/backbone.py and flash/prefill_attn.py contain code adapted from
+    models/fast_streaming.py, models/cudagraph/*.py and models/stream_runtime/stream/kv_cache.py of that runtime
+    (Apache License, Version 2.0).
+
+configs/fast-16gb.json
+    The official configs/fast.json warmup profile without the CFG (batch 2) text-encoder / prefill graphs above
+    256 tokens, so that the official --fast-all baseline fits a 16 GB GPU.
+
+The audio tokenizer used by the runtime (Python package qwen-tts, installed from PyPI, not included here) is based on
+Qwen3-TTS by the Alibaba Qwen Team, https://github.com/QwenLM/Qwen3-TTS, licensed under the Apache License,
+Version 2.0. The streaming codec runtime in third_party/breeze-tts/models/stream_runtime/ builds on it.
+
+Model weights
+-------------
+No model weights are included. Without --model, scripts/serve.py downloads BreezeBlue/Breeze-TTS-2
+(https://huggingface.co/BreezeBlue/Breeze-TTS-2, revision 3e28c5151381a722f1d8661b4118c298caa77aa4) from the
+Hugging Face Hub. The weights, derivative models and self-hosted outputs are governed by the BreezeBlue Research and
+Non-Commercial License: research and non-commercial use only. The Apache License of this repository does not grant
+any right to use the model weights.

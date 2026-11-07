@@ -1,0 +1,14 @@
+# .ghpublish.toml —— 本仓的发布清单。写一次，之后同步复用。
+# allow: 永久批准发布的路径 glob（支持 **）
+# deny : 永久拒绝的路径 glob
+# 两边都不匹配的文件 = 新文档，preflight 会提示一次。
+
+[docs]
+allow = ["README.md", "README.zh.md", "README.en.md", "README.zh-CN.md", "LICENSE", "LICENSE.md", "LICENSE.txt", "CONTRIBUTING.md", "CHANGELOG.md", "SECURITY.md", "CODE_OF_CONDUCT.md", ".gitignore", ".gitattributes", "requirements.txt", "third_party/breeze-tts/requirements.txt", "third_party/breeze-tts/LICENSE"]
+deny  = []
+
+[meta]
+source_path = "~/Desktop/aicode/AsherGithub/sources/Breeze-TTS-2-flash"
+description = "2x faster Breeze TTS 2 inference with lossless CUDA kernels. Streaming text-to-speech at 4.3x real time, 32-38 ms to first audio, on one RTX 4080 SUPER. Same weights, no quantization, same HTTP API as the official --fast-all server."
+source_readme_sha256 = "c722ed27b608f33b8626314145e0b38f888ee1eef2243606f0b8510f51b625d5"
+readme_reviewed_sha256 = "c722ed27b608f33b8626314145e0b38f888ee1eef2243606f0b8510f51b625d5"

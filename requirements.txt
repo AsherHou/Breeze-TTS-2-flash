@@ -1,0 +1,4 @@
+# Official Breeze TTS runtime dependencies (torch 2.9.1, torchaudio 2.9.1, transformers 4.57.3, qwen-tts 0.1.1, ...)
+-r third_party/breeze-tts/requirements.txt
+# Building the CUDA extensions on the first start (JIT through torch.utils.cpp_extension; needs the CUDA 12.8 toolkit).
+ninja>=1.11
